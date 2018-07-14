@@ -47,14 +47,13 @@ class Document < ApplicationRecord
   def scan_contents
     proceed!
     contents = scan(url)
-    Element.transaction do
-      contents.each do |content|
-        elements.create(content: content)
-      end
+    contents.each do |content|
+      elements.create(content: content)
     end
     success!
-  rescue StandardError
+  rescue StandardError => e
     failure!
+    raise e
   end
 
   def perform_document_parser

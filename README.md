@@ -4,7 +4,11 @@ Provides Json API to parse HTML page content and store its content.
 
 ## Description
 
-[Hiroikaki](https://hiroikaki.herokuapp.com) provides Json API to parse HTML page content and store its content.
+[Hiroikaki](https://hiroikaki.herokuapp.com) provides Json API to parse HTML page content with [Hiroiyomi](https://github.com/tomosm/hiroiyomi) and store its content.
+
+***DEMO:***
+
+![Demo](https://github.com/tomosm/hiroikaki/blob/media/demo.gif)
 
 ## Features
 
@@ -14,8 +18,8 @@ Provides Json API to parse HTML page content and store its content.
 
 ## Requirement
 
-- Ruby 2.5.1
-- Ruby on Rails 5.2
+- Ruby 2.5.1+
+- Ruby on Rails 5.2+
 - Redis Server for Production
 - PostgreSQL Server for Production
 
@@ -46,6 +50,9 @@ Provides Json API to parse HTML page content and store its content.
     $ git clone https://github.com/tomosm/hiroikaki
     $ cd hiroikaki
     $ bundle install
+    $ bundle exec rake db:migrate
+    $ redis-server
+    $ bundle exec sidekiq
     $ bundle exec rails s
 
 ## License

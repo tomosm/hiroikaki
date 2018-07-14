@@ -18,7 +18,7 @@ module FilterElements
   private
 
   def contents_content_list(filtered_elements, contents_name)
-    filtered_elements.select { |element| contents_name.include?(element.name) }.map(&:content)
+    filtered_elements.select { |element| contents_name.include?(element.name) }.map(&:inner_html).select(&:present?)
   end
 
   def links_content_list(filtered_elements, links_name)

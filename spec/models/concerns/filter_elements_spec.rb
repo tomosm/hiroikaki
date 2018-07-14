@@ -14,8 +14,8 @@ RSpec.describe FilterElements do
         before do
           data = [
             Hiroiyomi::Html::Element.new('h1'),
-            Hiroiyomi::Html::Element.new('h2', content: 'h2_content'),
-            Hiroiyomi::Html::Element.new('p', content: 'p_content'),
+            Hiroiyomi::Html::Element.new('h2', children: [Hiroiyomi::Html::Text.new('h2_content')]),
+            Hiroiyomi::Html::Element.new('p', children: [Hiroiyomi::Html::Text.new('h_content')]),
             Hiroiyomi::Html::Element.new('a', attributes: [Hiroiyomi::Html::Attribute.new('href')]),
             Hiroiyomi::Html::Element.new('a', attributes: [Hiroiyomi::Html::Attribute.new('href', '/aboutme')])
           ]
