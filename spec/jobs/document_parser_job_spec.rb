@@ -18,6 +18,14 @@ RSpec.describe DocumentParserJob, type: :job do
       it { expect(DocumentParserJob.perform_now(document.id)).to be_truthy }
     end
 
+    context 'error occurs during scanning' do
+      let(:document) { create :document }
+      before do
+        Document.any_instance.should_receive(:scan_contents) { raise StandardError }
+      end
+      it { expect(DocumentParserJob.perform_now(document.id)).to be_falsey }
+    end
+
     context 'document is not present' do
       it { expect(DocumentParserJob.perform_now(nil)).to be_falsey }
     end
